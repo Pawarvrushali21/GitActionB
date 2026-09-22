@@ -1,14 +1,27 @@
-name: First GitHub Actions Workflow
-on:
-  workflow_dispatch:
+name: Basic Commands
+
+on: [push]
 
 jobs:
-  first-job:
+  demo-commands:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print welcome message
-        run: echo "Hello from GitHub Actions!"
+      - name: Show current working directory
+        run: pwd
 
-      - name: Display date and time
+      - name: List files in the directory
+        run: ls -la
+
+      - name: Print today's date
         run: date
+
+      - name: Create and display a text file
+        run: |
+          echo "This is a demo file" > demo.txt
+          cat demo.txt
+
+      - name: Run Python program
+        run: |
+          echo 'print("Hello from Python!")' > hello.py
+          python3 hello.py
