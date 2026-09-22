@@ -1,27 +1,19 @@
-name: Basic Commands
+name: Cron Every 5 Minutes
 
-on: [push]
+on:
+  schedule:
+    - cron: "*/5 * * * *"
 
 jobs:
-  demo-commands:
+  cron-job:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Show current working directory
-        run: pwd
+      - name: Print message
+        run: echo "Cron job is running"
 
-      - name: List files in the directory
-        run: ls -la
-
-      - name: Print today's date
+      - name: Display date and time
         run: date
 
-      - name: Create and display a text file
-        run: |
-          echo "This is a demo file" > demo.txt
-          cat demo.txt
-
-      - name: Run Python program
-        run: |
-          echo 'print("Hello from Python!")' > hello.py
-          python3 hello.py
+      - name: Print completion message
+        run: echo "Cron job completed successfully"
